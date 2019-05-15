@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import datetime
 
 import requests
@@ -7,15 +8,21 @@ from flask import render_template
 from flask_debug import Debug
 from twilio.rest import Client
 
-import util
+app = Flask(__name__)
+print("my name is", __name__)
+import sys, os
+print(sys.path)
+print(os.getcwd())
+sys.path.append('/Users/mvy/Documents/GA/FlaskDemo/gaproject')
+
 from config import Config
 from config import Config
 from forms import UserPreferencesForm
+
+# Import local files 
+import util
 from gaproject.models.movie import Movie
 from gaproject.models.results import Results
-
-app = Flask(__name__)
-
 
 @app.route('/')
 @app.route('/index')
@@ -41,13 +48,19 @@ def user_preferences_form():
     Renders a form so the user can submit a phone number (optional) and some genres
     After form submission is successful, shows the results page
     """
+    import sys
+    print(sys.version)
+    print("i am before the form call")
     form = UserPreferencesForm(meta={'csrf': False})
+    print("i am after the form call")
     if form.validate_on_submit():
+        print("i am in the form validate function")
         matching_movies = _fetch_matching_movies(form.genres_checkbox.data)
         chosen_genres_names = _checklist_mapping(form.genres_checkbox.data)
         user_results = Results(str(form.phone_number.data), chosen_genres_names, matching_movies)
         _send_sms(user_results)
         return render_template('results.html', result=user_results)
+    print("i can render!")
     return render_template('form.html', title='Trang\'s Movie App', form=form)
 
 
@@ -105,8 +118,12 @@ def _send_sms(user_results):
     """
     if len(user_results.movies) > 0 and user_results.phone_number:
         client = Client(Config.ACCOUNT_SID, Config.AUTH_TOKEN)
+        print(Config.ACCOUNT_SID, Config.AUTH_TOKEN)
+        body = _construct_sms(user_results.movies)
+        to = '+1' + str(user_results.phone_number)
+        print(body, to)
         client.messages.create(
-            from_='+18036102506',
+            from_='+15854929141',
             body=_construct_sms(user_results.movies),
             to='+1' + str(user_results.phone_number)
         )
@@ -133,6 +150,10 @@ def _remove_unicode(*args):
 
 
 if __name__ == '__main__':
+    print("hello")
     Debug(app)
+    print("y")
     app.config.from_object(Config)
+    print("aasdf")
     app.run(debug=True, host='0.0.0.0', port=5000)
+    print("after")
