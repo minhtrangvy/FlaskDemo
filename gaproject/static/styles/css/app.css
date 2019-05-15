@@ -1,0 +1,103 @@
+/*Results accordion styling*/
+.accordion {
+    background-color: #929292;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15pt;
+    transition: 0.4s;
+    text-decoration: underline;
+}
+
+.active {
+    background: #26a7de;
+    color: white;
+    round-color: #ccc;
+}
+
+.accordion:hover {
+    background: #26a7de;
+    round-color: #ccc;
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+
+
+/*Image to text transition*/
+.container {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.image {
+    display: block;
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .8s ease;
+    background-color: #008CBA;
+}
+
+.container:hover .overlay {
+    opacity: .93;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-30%, -50%);
+    text-align: center;
+}
+
+
+/*Personal preference*/
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: white;
+}
+
+.special {
+    color: black;
+}
+
+.small {
+    font-size: 12pt;
+}
+
+body {
+    color: white;
+    background-color: #929292;
+    font-size: 15pt;
+    font-family: system-ui;
+}
