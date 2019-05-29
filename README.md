@@ -3,6 +3,9 @@ This is for GA's Python Web Dev Course.
 This app is a movie app! Read more about the actual purpose of the app in index.html, once you've spun up the local server.
 
 ## Instructions
+This app works with Python2.7
+1. Start a env for this project if you don't already have one: `virtualenv venv` and source it `source venv/bin/activate`
+1. Install all the things `pip install -r requirements.txt` (uninstall by doing `virtualenv --clear venv` if Flask thinks it's using Python 3 and reinstall using `pip` which should be for Python2.7
 1. You need the correct Twilio Auth token. It should look something like `21xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`. Set it to the `AUTH_TOKEN` environment variable.  
 1. `export FLASK_APP=gaproject`
 1. Then run `flask run`
