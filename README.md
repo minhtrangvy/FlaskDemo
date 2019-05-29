@@ -3,9 +3,10 @@ This is for GA's Python Web Dev Course.
 This app is a movie app! Read more about the actual purpose of the app in index.html, once you've spun up the local server.
 
 ## Instructions
-1. You need the correct Twilio Auth token. It should look something like `21xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`. Set it to the `AUTH_TOKEN` environment variable.    
-2. Then run `flask run`
-3. Profit at `localhost:5000`
+1. You need the correct Twilio Auth token. It should look something like `21xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`. Set it to the `AUTH_TOKEN` environment variable.  
+1. `export FLASK_APP=gaproject`
+1. Then run `flask run`
+1. Profit at `localhost:5000`
 
 ## Routes
 ### /, /index
